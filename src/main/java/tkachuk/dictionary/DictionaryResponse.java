@@ -10,4 +10,9 @@ public class DictionaryResponse
         this.word = word;
         this.definition = definition;
     }
+
+    public String getWord()
+    {
+        return word;
+    }
 }
