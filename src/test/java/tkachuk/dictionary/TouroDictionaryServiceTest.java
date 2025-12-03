@@ -1,5 +1,6 @@
 package tkachuk.dictionary;
 
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,19 +9,21 @@ class TouroDictionaryServiceTest
 {
 
     @Test
-    void postWords()
+    void lookUpWords()
     {
         // given
-        TouroDictionaryService service = new TouroDictionaryServiceFactory()
-                .create();
-        DictionaryRequest dictionaryRequest = new DictionaryRequest("AD");
+        TouroDictionaryService service =
+                new TouroDictionaryServiceFactory(
+                        "https://ktr2vtjral4jnkcmzn5pkzfyhi0kltie.lambda-url.us-east-2.on.aws/")
+                        .create();
 
         // when
+        DictionaryRequest dictionaryRequest = new DictionaryRequest("AD");
         DictionaryResponse dictionaryResponse = service.lookupWord(dictionaryRequest)
+                .subscribeOn(Schedulers.io())
                 .blockingGet();
 
         // then
-        assertNotNull(dictionaryResponse);
-        assertEquals("AD", dictionaryResponse.getWord());
+        assertEquals("an advertisement [n -S]", dictionaryResponse.getDefinition());
     }
 }

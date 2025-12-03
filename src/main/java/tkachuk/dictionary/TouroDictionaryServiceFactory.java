@@ -6,7 +6,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TouroDictionaryServiceFactory
 {
-    private String lambdaUrl = "https://ktr2vtjral4jnkcmzn5pkzfyhi0kltie.lambda-url.us-east-2.on.aws/";
+    private String lambdaUrl;
+
+    public TouroDictionaryServiceFactory(String lambdaUrl)
+    {
+        this.lambdaUrl = lambdaUrl;
+    }
 
     public TouroDictionaryService create()
     {

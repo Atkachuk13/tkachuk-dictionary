@@ -11,6 +11,11 @@ public class DictionaryResponse
         this.definition = definition;
     }
 
+    public String getDefinition()
+    {
+        return definition;
+    }
+
     public String getWord()
     {
         return word;
