@@ -43,4 +43,17 @@ class TouroDictionaryTest
         // then
         assertNull(definition);
     }
+
+    @Test
+    public void lookUpDifferentCaseWord()
+    {
+        // given
+        TouroDictionary touroDictionary = new TouroDictionary();
+
+        // when
+        String definition = touroDictionary.lookUp("ab");
+
+        // then
+        assertTrue(definition.contains("an abdominal muscle [n -S]"));
+    }
 }

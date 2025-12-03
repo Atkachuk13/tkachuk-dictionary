@@ -53,6 +53,6 @@ public class TouroDictionary
 
     public String lookUp(String word)
     {
-        return dictionary.get(word);
+        return dictionary.get(word.toUpperCase());
     }
 }
