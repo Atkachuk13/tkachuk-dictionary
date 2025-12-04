@@ -14,7 +14,7 @@ class TouroDictionaryServiceTest
         // given
         TouroDictionaryService service =
                 new TouroDictionaryServiceFactory(
-                        "https://ktr2vtjral4jnkcmzn5pkzfyhi0kltie.lambda-url.us-east-2.on.aws/")
+                        "https://k7dcdbsfnvtrowrakvqk23hqbe0rixxk.lambda-url.us-east-2.on.aws/")
                         .create();
 
         // when
