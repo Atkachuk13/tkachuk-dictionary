@@ -7,6 +7,9 @@ import java.util.HashMap;
 
 public class TouroDictionary
 {
+    // create another constructor, that you pass in an input stream
+    // the goal is: in our Request Handler, for our lambda we call the ither c instrycter passing the input stream
+    // from our file in s3
     private HashMap<String, String> dictionary = new HashMap<>();
 
     public TouroDictionary()
