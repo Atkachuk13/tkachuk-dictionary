@@ -17,6 +17,12 @@ public class TouroDictionary
         loadDictionary();
     }
 
+    // constructor for s3
+    public TouroDictionary(InputStream inputStream)
+    {
+
+    }
+
     private void loadDictionary()
     {
         try
