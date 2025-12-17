@@ -5,7 +5,11 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.google.gson.Gson;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -19,6 +23,17 @@ public class DictionaryRequestHandler implements
     {
         this.touroDictionary = new TouroDictionary();
         this.gson = new Gson();
+
+        S3Client s3Client = S3Client.create();
+
+        GetObjectRequest getObjectRequest = GetObjectRequest
+                .builder()
+                .bucket("tkachuk-dictionary")
+                .key("dictionary.txt")
+                .build();
+
+        InputStream inputStream = s3Client.getObject(getObjectRequest);
+        touroDictionary = new TouroDictionary();
     }
 
     @Override
