@@ -1,6 +1,7 @@
 package tkachuk.dictionary;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -18,9 +19,23 @@ public class TouroDictionary
     }
 
     // constructor for s3
-    public TouroDictionary(InputStream inputStream)
+    public TouroDictionary(InputStream inputStream) throws IOException
     {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line = bufferedReader.readLine();
 
+        while (line != null)
+        {
+            if (line.contains(" "))
+            {
+                dictionary.put(line.substring(0, line.indexOf(" ")),
+                        line.substring(line.indexOf(" ") + 1));
+            } else
+            {
+                dictionary.put(line, " ");
+            }
+            line = bufferedReader.readLine();
+        }
     }
 
     private void loadDictionary()
